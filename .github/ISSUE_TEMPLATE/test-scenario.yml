@@ -1,0 +1,44 @@
+# SPDX-FileCopyrightText: 2026 Illia Brashkin
+# SPDX-License-Identifier: MIT
+---
+# yamllint disable rule:line-length
+name: Test Scenario Proposal
+description: Propose a new automated test scenario or coverage expansion for pravda.com.ua.
+title: 'test: '
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Expand Coverage Intentionally
+        Review the Test Plan and existing test cases before proposing a new scenario.
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Scenario Motivation & Scope
+      description: Which requirement or functionality of <https://www.pravda.com.ua> does this cover?
+      placeholder: E.g., Subscription flow validation, dark theme contrast audit, localization fallback.
+    validations:
+      required: true
+  - type: textarea
+    id: scenario-steps
+    attributes:
+      label: Proposed Test Steps
+      description: Structured steps according to ISTQB format (Given / When / Then).
+      placeholder: |
+        - Precondition: User is on the home page (desktop view)
+        - Action: Click on "Eng" language switch
+        - Expected: URL updates to /eng/, header updates to English
+    validations:
+      required: true
+  - type: checkboxes
+    id: compliance
+    attributes:
+      label: QA Compliance
+      description: Confirm testing principles.
+      options:
+        - label: This scenario is deterministic and does not cause destructive actions on production.
+          required: true
+        - label: I am willing to implement the Page Object and Playwright spec for this.
+          required: false

@@ -1,0 +1,34 @@
+# SPDX-FileCopyrightText: 2026 Illia Brashkin
+# SPDX-License-Identifier: MIT
+---
+# yamllint disable rule:line-length
+name: Question
+description: Inquire about test execution, POM architecture, or setup.
+title: 'question: '
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Questions and Clarifications
+        Review [`README.md`][readme] and [`CONTRIBUTING.md`][contributing] before submitting.
+
+        [readme]: https://github.com/illia-m-b/ukrainska-pravda-qa-suite/blob/main/README.md
+        [contributing]: https://github.com/illia-m-b/ukrainska-pravda-qa-suite/blob/main/CONTRIBUTING.md
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: State your question clearly with relevant context.
+      placeholder: What behavior, test locator, or configuration needs clarification?
+    validations:
+      required: true
+  - type: textarea
+    id: code-context
+    attributes:
+      label: Relevant Code or Configuration
+      description: Test snippet, POM component, or playwright.config.ts section.
+      render: typescript
+    validations:
+      required: false

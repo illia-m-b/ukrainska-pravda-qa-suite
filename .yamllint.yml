@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 Illia Brashkin
+# SPDX-License-Identifier: MIT
+---
+extends: default
+ignore-from-file: [.gitignore, .yamlignore]
+rules:
+  comments:
+    level: error
+    min-spaces-from-content: 1
+  truthy:
+    level: error

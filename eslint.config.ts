@@ -1,0 +1,143 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Illia Brashkin
+ * SPDX-License-Identifier: MIT
+ */
+
+import eslint from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import packageJson from 'eslint-plugin-package-json';
+import perfectionist from 'eslint-plugin-perfectionist';
+import playwright from 'eslint-plugin-playwright';
+import security from 'eslint-plugin-security';
+import { configs as sonarjsConfigs } from 'eslint-plugin-sonarjs';
+import tsdoc from 'eslint-plugin-tsdoc';
+import unicorn from 'eslint-plugin-unicorn';
+import { defineConfig } from 'eslint/config';
+import globals from 'globals';
+import tseslint from 'typescript-eslint';
+
+export default defineConfig([
+  {
+    ignores: [
+      '.playwright/**',
+      'playwright/.cache/**',
+      'playwright-report/**',
+      'test-results/**',
+      'blob-report/**',
+      'dist/**',
+      'coverage/**',
+      '.github/**',
+    ],
+  },
+  eslint.configs.recommended,
+  unicorn.configs.recommended,
+  perfectionist.configs['recommended-natural'],
+  security.configs.recommended,
+  sonarjsConfigs.recommended,
+  {
+    extends: [
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
+    ],
+    files: ['**/*.{js,ts}'],
+    languageOptions: {
+      globals: {
+        ...globals.nodeBuiltin,
+      },
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    linterOptions: {
+      reportUnusedDisableDirectives: 'error',
+      reportUnusedInlineConfigs: 'error',
+    },
+    plugins: {
+      tsdoc,
+    },
+    rules: {
+      '@typescript-eslint/explicit-function-return-type': [
+        'error',
+        { allowExpressions: true },
+      ],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          args: 'all',
+          argsIgnorePattern: '^_',
+          caughtErrors: 'all',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+          varsIgnorePattern: '^_',
+        },
+      ],
+      '@typescript-eslint/promise-function-async': [
+        'error',
+        {
+          checkArrowFunctions: true,
+          checkFunctionDeclarations: true,
+          checkFunctionExpressions: true,
+          checkMethodDeclarations: true,
+        },
+      ],
+      '@typescript-eslint/restrict-template-expressions': [
+        'error',
+        { allowNumber: true },
+      ],
+      '@typescript-eslint/return-await': ['error', 'in-try-catch'],
+      '@typescript-eslint/strict-boolean-expressions': [
+        'error',
+        {
+          allowNullableObject: true,
+          allowNumber: false,
+          allowString: false,
+        },
+      ],
+      '@typescript-eslint/switch-exhaustiveness-check': 'error',
+      'no-console': 'error',
+      'no-extend-native': 'error',
+      'no-proto': 'error',
+    },
+  },
+  {
+    extends: [playwright.configs['flat/recommended']],
+    files: ['tests/**'],
+    rules: {
+      'playwright/no-commented-out-tests': 'error',
+      'playwright/no-raw-locators': 'off',
+      'playwright/no-skipped-test': 'warn',
+      'playwright/no-test-return-statement': 'error',
+      'playwright/prefer-ending-with-an-expect': 'error',
+      'playwright/prefer-to-be': 'error',
+      'playwright/prefer-to-contain': 'error',
+      'playwright/require-annotation-reason': 'error',
+    },
+  },
+  {
+    extends: [packageJson.configs.recommended, packageJson.configs.stylistic],
+    files: ['package.json'],
+    rules: {
+      'package-json/no-local-dependencies': 'error',
+      'package-json/require-author': 'error',
+      'package-json/require-bugs': 'error',
+      'package-json/require-devDependencies': 'error',
+      'package-json/require-devEngines': 'error',
+      'package-json/require-engines': 'error',
+      'package-json/require-homepage': 'error',
+      'package-json/require-keywords': 'error',
+      'package-json/require-private': 'error',
+      'package-json/require-scripts': 'error',
+      'package-json/restrict-dependency-ranges': [
+        'error',
+        {
+          forDependencyTypes: ['dependencies', 'devDependencies'],
+          rangeType: 'pin',
+        },
+      ],
+      'package-json/restrict-private-properties': 'error',
+    },
+  },
+  eslintConfigPrettier,
+]);

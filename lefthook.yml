@@ -1,0 +1,27 @@
+# SPDX-FileCopyrightText: 2026 Illia Brashkin
+# SPDX-License-Identifier: MIT
+---
+# yamllint disable rule:line-length
+glob_matcher: doublestar
+pre-commit:
+  commands:
+    pnpm-pkg-fix:
+      glob: 'package.json'
+      run: pnpm pkg fix
+      stage_fixed: true
+    lint-ts-fix:
+      glob: '**/*.{js,ts,cjs,mjs},**/package.json'
+      run: pnpm lint:ts:fix {staged_files}
+      stage_fixed: true
+    format-code-fix:
+      run: pnpm format:code:fix {staged_files}
+      stage_fixed: true
+pre-push:
+  parallel: true
+  commands:
+    types-check:
+      run: pnpm types:check
+    format-code-check:
+      run: pnpm format:code:check
+    lint-ts-check:
+      run: pnpm lint:ts:check

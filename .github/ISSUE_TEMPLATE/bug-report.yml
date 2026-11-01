@@ -1,0 +1,86 @@
+# SPDX-FileCopyrightText: 2026 Illia Brashkin
+# SPDX-License-Identifier: MIT
+---
+# yamllint disable rule:line-length
+name: Bug Report
+description: Report a broken automated test, CI failure, or a defect discovered on pravda.com.ua.
+title: 'fix: '
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Reproduce Before Fixing
+        Review [`CONTRIBUTING.md`][contributing] and search existing issues before opening a defect report.
+
+        [contributing]: https://github.com/illia-m-b/ukrainska-pravda-qa-suite/blob/main/CONTRIBUTING.md
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Pre-flight Checks
+      description: Confirm required preliminary checks.
+      options:
+        - label: I searched existing issues for duplicates.
+          required: true
+        - label: I verified whether this is an automation defect or a defect on pravda.com.ua.
+          required: true
+  - type: dropdown
+    id: bug-type
+    attributes:
+      label: Defect Scope
+      description: What kind of issue is being reported?
+      options:
+        - Test Automation Flakiness / Failure
+        - Target System Defect (pravda.com.ua)
+        - CI/CD & Pipeline Issue
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem Description
+      description: Clear and concise description of what failed and what was expected.
+      placeholder: Describe the failure, expected outcome, or failing assertion.
+    validations:
+      required: true
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser Engine
+      description: Target browser where the issue occurred.
+      options:
+        - Firefox
+        - Chromium
+        - WebKit
+        - Headless / All
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction Steps
+      description: CLI command, test file, or scenario to reproduce.
+      placeholder: |
+        1. Run: `pnpm exec playwright test tests/auth.spec.ts`
+        2. Target URL: https://www.pravda.com.ua
+        3. Observed failure: Timeout waiting for locator '#authModal'
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Playwright Logs or Trace Snippet
+      description: Relevant stack trace, error message, or console output.
+      render: shell
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional Context
+      description: OS version, screenshots, or network conditions.
+    validations:
+      required: false

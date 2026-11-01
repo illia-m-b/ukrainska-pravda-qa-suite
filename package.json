@@ -1,0 +1,87 @@
+{
+  "name": "ukrainska-pravda-qa-suite",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Playwright-based E2E test suite for the pravda.com.ua web portal.",
+  "keywords": [
+    "playwright",
+    "typescript",
+    "e2e-testing",
+    "software-quality-assurance",
+    "test-automation",
+    "page-object-model",
+    "accessibility-testing",
+    "wcag",
+    "iso-25010",
+    "usability-testing",
+    "test-plan",
+    "test-cases",
+    "traceability-matrix",
+    "graceful-degradation",
+    "shift-right-testing",
+    "pravda-com-ua"
+  ],
+  "homepage": "https://github.com/illia-m-b/ukrainska-pravda-qa-suite#readme",
+  "bugs": {
+    "url": "https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues",
+    "email": "illiamb@duck.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illia-m-b/ukrainska-pravda-qa-suite.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Illia Brashkin",
+    "email": "illiamb@duck.com"
+  },
+  "type": "module",
+  "scripts": {
+    "format:code": "prettier --ignore-unknown --log-level=warn",
+    "format:code:check": "pnpm format:code --check .",
+    "format:code:fix": "pnpm format:code --cache --cache-strategy=metadata --write",
+    "lint:ts": "eslint --cache --exit-on-fatal-error --no-warn-ignored --flag=unstable_native_nodejs_ts_config",
+    "lint:ts:check": "pnpm lint:ts --max-warnings=0",
+    "lint:ts:fix": "pnpm lint:ts --fix",
+    "test:e2e": "playwright test",
+    "test:e2e:codegen": "playwright codegen https://www.pravda.com.ua",
+    "test:e2e:report": "playwright show-report",
+    "test:e2e:ui": "playwright test --ui",
+    "types:check": "tsc"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@playwright/test": "1.64.1",
+    "@types/node": "24.19.2",
+    "eslint": "10.13.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-package-json": "1.11.0",
+    "eslint-plugin-perfectionist": "5.13.0",
+    "eslint-plugin-playwright": "2.12.1",
+    "eslint-plugin-security": "4.2.0",
+    "eslint-plugin-sonarjs": "4.2.2",
+    "eslint-plugin-tsdoc": "0.5.4",
+    "eslint-plugin-unicorn": "79.0.0",
+    "globals": "17.13.0",
+    "lefthook": "2.2.1",
+    "prettier": "3.9.10",
+    "prettier-plugin-jsdoc": "1.8.1",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.72.0"
+  },
+  "engines": {
+    "node": "24.x"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "24.22.2",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "pnpm",
+      "version": "12.16.1",
+      "onFail": "error"
+    }
+  }
+}
