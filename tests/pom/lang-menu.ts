@@ -41,7 +41,7 @@ export const langMenu = (page: Page): LangMenu => {
     ['ru', /рос/iu],
     ['uk', /укр/iu],
   ]);
-  const root = page.locator('.lang_menu');
+  const root = page.locator('.header_main .lang_menu');
   return {
     active: () => root.locator('.lang_menu_item_active'),
     switchTo: async (language: Language) => {
