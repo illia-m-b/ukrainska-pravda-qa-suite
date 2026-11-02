@@ -99,6 +99,7 @@ export default defineConfig([
       'no-console': 'error',
       'no-extend-native': 'error',
       'no-proto': 'error',
+      'unicorn/no-asterisk-prefix-in-documentation-comments': 'off',
     },
   },
   {
