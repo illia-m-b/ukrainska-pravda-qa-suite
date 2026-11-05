@@ -9,6 +9,7 @@ path = [
     ".prettierrc",
     ".yamlignore",
     "CHANGELOG.md",
+    "release-please-config.json",
     "renovate.json",
     "tsconfig.json"
 ]
@@ -17,6 +18,7 @@ SPDX-License-Identifier = "CC0-1.0"
 
 [[annotations]]
 path = [
+    ".release-please-manifest.json",
     "pnpm-lock.yaml"
 ]
 SPDX-FileCopyrightText = "NONE"

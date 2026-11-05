@@ -4,10 +4,15 @@
 # yamllint disable rule:line-length
 name: playwright
 'on':
-  push: &filter
+  workflow_call:
+    inputs:
+      release_created:
+        default: false
+        required: false
+        type: boolean
+  pull_request:
     branches:
       - main
-  pull_request: *filter
 permissions: {}
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -21,6 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          fetch-depth: ${{ github.event_name != 'pull_request' && 1 || 0 }}
           persist-credentials: false
           show-progress: false
       - uses: pnpm/setup@fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e # v3.1.2
@@ -29,8 +35,11 @@ jobs:
           require-lockfile: true
           save-cache: false
       - run: pnpm exec playwright install --with-deps firefox
-      - run: pnpm test:e2e
-      - if: failure()
+      - if: github.event_name == 'pull_request'
+        run: pnpm exec playwright test --only-changed="origin/${GITHUB_BASE_REF}" --pass-with-no-tests
+      - if: github.event_name != 'pull_request'
+        run: pnpm test:e2e
+      - if: failure() || inputs.release_created
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: playwright-report
