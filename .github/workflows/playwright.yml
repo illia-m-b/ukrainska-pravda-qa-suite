@@ -4,16 +4,12 @@
 # yamllint disable rule:line-length
 name: playwright
 'on':
-  workflow_call:
-    inputs:
-      release_created:
-        default: false
-        required: false
-        type: boolean
-  pull_request:
+  push: &filter
     branches:
       - main
-permissions: {}
+  pull_request: *filter
+permissions:
+  contents: read
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
@@ -21,8 +17,6 @@ jobs:
   playwright:
     runs-on: ubuntu-24.04
     timeout-minutes: 15
-    permissions:
-      contents: read
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -39,9 +33,9 @@ jobs:
         run: pnpm exec playwright test --only-changed="origin/${GITHUB_BASE_REF}" --pass-with-no-tests
       - if: github.event_name != 'pull_request'
         run: pnpm test:e2e
-      - if: failure() || inputs.release_created
+      - if: failure() || github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: playwright-report
           path: playwright-report/
-          retention-days: 3
+          retention-days: 1
