@@ -10,7 +10,7 @@ pre-commit:
       run: pnpm pkg fix
       stage_fixed: true
     lint-ts-fix:
-      glob: '**/*.{js,ts,cjs,mjs},**/package.json'
+      glob: '**/*.{js,ts,cjs,mjs}'
       run: pnpm lint:ts:fix {staged_files}
       stage_fixed: true
     format-code-fix:

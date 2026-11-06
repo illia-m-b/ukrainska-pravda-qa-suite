@@ -7,6 +7,7 @@ import { test as base } from '@playwright/test';
 
 import { authModal, type AuthModal } from './pom/auth-modal.ts';
 import { langMenu, type LangMenu } from './pom/lang-menu.ts';
+import { newsletter, type Newsletter } from './pom/newsletter.ts';
 
 /**
  * Custom test fixtures extending the base Playwright environment.
@@ -21,6 +22,11 @@ interface Fixtures {
    * Component object for the header language selection menu.
    */
   langMenu: LangMenu;
+
+  /**
+   * Component object for the newsletter subscription widget.
+   */
+  newsletter: Newsletter;
 }
 
 /**
@@ -32,6 +38,9 @@ export const test = base.extend<Fixtures>({
   },
   langMenu: async ({ page }, use) => {
     await use(langMenu(page));
+  },
+  newsletter: async ({ page }, use) => {
+    await use(newsletter(page));
   },
 });
 
