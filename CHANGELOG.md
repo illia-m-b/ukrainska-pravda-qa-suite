@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.0...v0.1.1) (2026-11-06)
+
+
+### Features
+
+* **pom:** introduce newsletter component and test fixture ([#26](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/26)) ([4f79e7e](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/commit/4f79e7e0e16742408ba4409b86e9726a42ecfc59)), closes [#25](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/25)
+
 ## 0.1.0 (2026-11-05)
 
 
