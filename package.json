@@ -1,6 +1,6 @@
 {
   "name": "ukrainska-pravda-qa-suite",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "description": "Playwright-based E2E test suite for the pravda.com.ua web portal.",
   "keywords": [
