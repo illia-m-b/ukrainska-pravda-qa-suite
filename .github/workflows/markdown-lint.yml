@@ -10,6 +10,7 @@ name: markdown-lint
     paths:
       - '**.md'
       - '**/.markdownlint-cli2.jsonc'
+      - '!CHANGELOG.md'
       - .github/workflows/markdown-lint.yml
   pull_request: *filter
 permissions: {}
