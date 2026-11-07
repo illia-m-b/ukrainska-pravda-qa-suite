@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.2...v0.1.3) (2026-11-07)
+
+
+### Features
+
+* **e2e:** automate morning newsletter subscription form tests ([#35](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/35)) ([dc37d27](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/commit/dc37d27576ae168ef84b946810caf5be73933220))
+
 ## [0.1.2](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.1...v0.1.2) (2026-11-07)
 
 
