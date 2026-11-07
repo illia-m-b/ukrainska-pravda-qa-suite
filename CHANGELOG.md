@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.1...v0.1.2) (2026-11-07)
+
+
+### Bug Fixes
+
+* **ci:** prevent duplicate release pull requests and remove manual dispatch ([#31](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/31)) ([5ec6e8e](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/commit/5ec6e8e15e3560a0214d46ba457d4a934727a98b))
+
 ## [0.1.1](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.0...v0.1.1) (2026-11-06)
 
 
