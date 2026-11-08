@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.3...v0.1.4) (2026-11-08)
+
+
+### Features
+
+* **e2e:** automate functionality checks with JS disabled ([#39](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/39)) ([e2a1b4e](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/commit/e2a1b4ed5f7ad32f2cfb4ac6a2580ba4c5560120))
+
 ## [0.1.3](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.2...v0.1.3) (2026-11-07)
 
 
