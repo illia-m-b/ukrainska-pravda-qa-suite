@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.4...v0.2.0) (2026-11-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **e2e:** automate accessibility tests ([#45](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/45))
+
+### Features
+
+* **e2e:** automate accessibility tests ([#45](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/45)) ([143d243](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/commit/143d243b61ac64d6532b504bcc5ce0c0b5942e28))
+
 ## [0.1.4](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.3...v0.1.4) (2026-11-08)
 
 
