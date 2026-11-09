@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: MIT
  */
 
+import AxeBuilder from '@axe-core/playwright';
 import { test as base } from '@playwright/test';
 
 import { article, type Article } from './pom/article.ts';
@@ -18,27 +19,33 @@ interface Fixtures {
   /**
    * Component object for an article.
    */
-  article: Article;
+  readonly article: Article;
 
   /**
    * Component object for the authentication modal dialog.
    */
-  authModal: AuthModal;
+  readonly authModal: AuthModal;
+
+  /**
+   * Factory function for an accessibility scanner configured for the current
+   * page.
+   */
+  readonly axe: () => AxeBuilder;
 
   /**
    * Component object for the main feed.
    */
-  feed: Feed;
+  readonly feed: Feed;
 
   /**
    * Component object for the header language selection menu.
    */
-  langMenu: LangMenu;
+  readonly langMenu: LangMenu;
 
   /**
    * Component object for the newsletter subscription widget.
    */
-  newsletter: Newsletter;
+  readonly newsletter: Newsletter;
 }
 
 /**
@@ -50,6 +57,16 @@ export const test = base.extend<Fixtures>({
   },
   authModal: async ({ page }, use) => {
     await use(authModal(page));
+  },
+  axe: async ({ page }, use) => {
+    await use(() =>
+      new AxeBuilder({ page }).withTags([
+        'wcag2a',
+        'wcag2aa',
+        'wcag21a',
+        'wcag21aa',
+      ]),
+    );
   },
   feed: async ({ page }, use) => {
     await use(feed(page));
