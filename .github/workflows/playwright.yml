@@ -28,7 +28,7 @@ jobs:
           cache: true
           require-lockfile: true
           save-cache: false
-      - run: pnpm exec playwright install --with-deps firefox
+      - run: pnpm exec playwright install firefox
       - if: github.event_name == 'pull_request'
         run: pnpm exec playwright test --only-changed="origin/${GITHUB_BASE_REF}" --pass-with-no-tests
       - if: github.event_name != 'pull_request'
