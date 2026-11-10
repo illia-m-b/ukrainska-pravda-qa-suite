@@ -43,8 +43,8 @@ jobs:
   publish:
     needs: release-please
     if: needs.release-please.outputs.release_created == 'true'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    runs-on: ubuntu-slim
+    timeout-minutes: 5
     permissions: {}
     steps:
       - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
@@ -55,10 +55,10 @@ jobs:
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
         with:
+          github-token: ${{ steps.app-token.outputs.token }}
           name: playwright-report
           path: pages
           run-id: ${{ github.event.workflow_run.id }}
-          github-token: ${{ steps.app-token.outputs.token }}
       - run: zip -q -r playwright-report.zip pages
       - run: gh release upload "${TAG_NAME}" playwright-report.zip --clobber
         env:
@@ -70,6 +70,28 @@ jobs:
           GH_REPO: ${{ github.repository }}
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           TAG_NAME: ${{ needs.release-please.outputs.tag_name }}
+  build-pages:
+    needs: release-please
+    if: needs.release-please.outputs.release_created == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          ref: ${{ needs.release-please.outputs.tag_name }}
+          show-progress: false
+          sparse-checkout: |
+            presentation
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          github-token: ${{ github.token }}
+          name: playwright-report
+          path: pages
+          run-id: ${{ github.event.workflow_run.id }}
       - uses: docker://pandoc/core:3.11@sha256:62518bfb6833705dc90a1634d8d879299bd820b3f74ad3b32fba8b618452553a
         with:
           args: >-
@@ -83,9 +105,10 @@ jobs:
       - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
           path: pages
-  pages:
+  deploy-pages:
     needs:
       - release-please
+      - build-pages
       - publish
     if: needs.release-please.outputs.release_created == 'true'
     runs-on: ubuntu-slim
