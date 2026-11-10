@@ -27,7 +27,8 @@ SPDX-License-Identifier = "CC0-1.0"
 [[annotations]]
 path = [
     ".github/pull_request_template.md",
-    "package.json"
+    "package.json",
+    "presentation/presentation.md"
 ]
 SPDX-FileCopyrightText = "2026 Illia Brashkin"
 SPDX-License-Identifier = "MIT"
