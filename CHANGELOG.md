@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v1.0.0...v1.0.1) (2026-11-10)
+
+
+### Bug Fixes
+
+* **ci:** isolate pages artifact build into dedicated least-privilege job ([#52](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/52)) ([256695c](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/commit/256695c47a0bd3a1e96b9a0dc29228efee0cb592))
+
 ## [1.0.0](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.2.0...v1.0.0) (2026-11-10)
 
 
