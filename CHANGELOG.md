@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.0](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.2.0...v1.0.0) (2026-11-10)
+
+
+### Documentation
+
+* summarize project results and deliverables ([#47](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/issues/47)) ([f7143fe](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/commit/f7143fe6cce1f61bb6b01e014df131e0daf2f43c))
+
 ## [0.2.0](https://github.com/illia-m-b/ukrainska-pravda-qa-suite/compare/v0.1.4...v0.2.0) (2026-11-09)
 
 
