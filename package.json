@@ -65,10 +65,10 @@
     "eslint-plugin-unicorn": "79.0.0",
     "globals": "17.14.0",
     "lefthook": "2.2.1",
-    "prettier": "3.9.10",
+    "prettier": "3.10.1",
     "prettier-plugin-jsdoc": "1.8.1",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.72.1"
+    "typescript-eslint": "8.72.2"
   },
   "engines": {
     "node": "24.x"
