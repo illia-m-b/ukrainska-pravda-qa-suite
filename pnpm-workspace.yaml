@@ -13,4 +13,4 @@ autoInstallPeers: true
 allowBuilds:
   lefthook: true
 overrides:
-  '@typescript-eslint/utils': 8.72.1
+  '@typescript-eslint/utils': 8.72.2
