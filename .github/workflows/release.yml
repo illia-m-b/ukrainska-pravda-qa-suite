@@ -26,7 +26,7 @@ jobs:
       sha: ${{ steps.release.outputs.sha }}
       tag_name: ${{ steps.release.outputs.tag_name }}
     steps:
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
         id: app-token
         with:
           client-id: ${{ vars.APP_CLIENT_ID }}
@@ -47,7 +47,7 @@ jobs:
     timeout-minutes: 5
     permissions: {}
     steps:
-      - uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+      - uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
         id: app-token
         with:
           client-id: ${{ vars.APP_CLIENT_ID }}
@@ -92,7 +92,7 @@ jobs:
           name: playwright-report
           path: pages
           run-id: ${{ github.event.workflow_run.id }}
-      - uses: docker://pandoc/core:3.11@sha256:62518bfb6833705dc90a1634d8d879299bd820b3f74ad3b32fba8b618452553a
+      - uses: docker://pandoc/core:3.14@sha256:f6c6e92d8b150cc1e106e0fbdf2697dea179c737c99c8dbf36caa907b7ba7e73
         with:
           args: >-
             --standalone
